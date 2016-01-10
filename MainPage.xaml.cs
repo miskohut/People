@@ -23,8 +23,35 @@ namespace People {
     /// </summary>
     public sealed partial class MainPage : Page {
 
+        private ObservableCollection<Person> Contacts { get; }
+
         public MainPage() {
             this.InitializeComponent();
+
+            Contacts = new ObservableCollection<Person>();
+
+            Person Person = new Person();
+            Person.FirstName = "Luke";
+            Person.LastName = "Skywalker";
+            Person.SetNameToBeDisplayed(Person.FirstName + " " + Person.LastName);
+
+            Contacts.Add(Person);
+
+            Person = new Person();
+            Person.FirstName = "James";
+            Person.LastName = "Kirk";
+            Person.SetNameToBeDisplayed(Person.FirstName + " " + Person.LastName);
+
+            Contacts.Add(Person);
+
+            Person = new Person();
+            Person.FirstName = "Peter";
+            Person.LastName = "Quill";
+            Person.SetNameToBeDisplayed(Person.FirstName + " " + Person.LastName);
+
+            Contacts.Add(Person);
+
+            ContactsListView.ItemsSource = Contacts;
         }
     }
 }

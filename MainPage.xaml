@@ -7,9 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Name="ContactsTemplate" >
+            <StackPanel Orientation="Vertical" >
+                <TextBlock Text="{Binding NameToBeDisplayed}" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <Pivot >
             <PivotItem Header="People">
+
+                <ListView x:Name="ContactsListView"
+                          ItemTemplate="{StaticResource ContactsTemplate}" />
 
             </PivotItem>
 

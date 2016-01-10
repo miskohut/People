@@ -25,5 +25,6 @@ namespace People {
 
         public MainPage() {
             this.InitializeComponent();
+        }
     }
 }

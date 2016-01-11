@@ -23,35 +23,58 @@ namespace People {
     /// </summary>
     public sealed partial class MainPage : Page {
 
-        private ObservableCollection<Person> Contacts { get; }
+        private ObservableCollection<Person> Contacts;
+        private ObservableCollection<GroupingItem> groupingItems = new ObservableCollection<GroupingItem>();
 
         public MainPage() {
             this.InitializeComponent();
 
             Contacts = new ObservableCollection<Person>();
 
-            Person Person = new Person();
-            Person.FirstName = "Luke";
-            Person.LastName = "Skywalker";
-            Person.SetNameToBeDisplayed(Person.FirstName + " " + Person.LastName);
+            Person Luke = new Person();
+            Luke.FirstName = "Luke";
+            Luke.LastName = "Skywalker";
+            Luke.SetNameToBeDisplayed(Luke.FirstName + " " + Luke.LastName);
 
-            Contacts.Add(Person);
+            Contacts.Add(Luke);
 
-            Person = new Person();
-            Person.FirstName = "James";
-            Person.LastName = "Kirk";
-            Person.SetNameToBeDisplayed(Person.FirstName + " " + Person.LastName);
+            Luke = new Person();
+            Luke.FirstName = "Luke";
+            Luke.LastName = "Skywalker";
+            Luke.SetNameToBeDisplayed(Luke.FirstName + " " + Luke.LastName);
 
-            Contacts.Add(Person);
+            Contacts.Add(Luke);
 
-            Person = new Person();
-            Person.FirstName = "Peter";
-            Person.LastName = "Quill";
-            Person.SetNameToBeDisplayed(Person.FirstName + " " + Person.LastName);
+            Luke = new Person();
+            Luke.FirstName = "Luke";
+            Luke.LastName = "Skywalker";
+            Luke.SetNameToBeDisplayed(Luke.FirstName + " " + Luke.LastName);
 
-            Contacts.Add(Person);
+            Contacts.Add(Luke);
 
-            ContactsListView.ItemsSource = Contacts;
+            Luke = new Person();
+            Luke.FirstName = "Luke";
+            Luke.LastName = "Skywalker";
+            Luke.SetNameToBeDisplayed(Luke.FirstName + " " + Luke.LastName);
+
+            Contacts.Add(Luke);
+
+            Person James = new Person();
+            James.FirstName = "James";
+            James.LastName = "Kirk";
+            James.SetNameToBeDisplayed(James.FirstName + " " + James.LastName);
+
+            Contacts.Add(James);
+
+            Person Peter = new Person();
+            Peter.FirstName = "Peter";
+            Peter.LastName = "Quill";
+            Peter.SetNameToBeDisplayed(Peter.FirstName + " " + Peter.LastName);
+
+            Contacts.Add(Peter);
+
+            //ContactsListView.ItemsSource = groupingItems;
+            CollectionViewSource.Source = Person.createGrouping(Contacts);
         }
     }
 }

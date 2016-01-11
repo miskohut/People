@@ -5,6 +5,7 @@
     xmlns:local="using:People"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:People.Backend"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -13,7 +14,13 @@
                 <TextBlock Text="{Binding NameToBeDisplayed}" />
             </StackPanel>
         </DataTemplate>
+
+        <CollectionViewSource x:Name="CollectionViewSource"
+                              x:Key="src"
+                              IsSourceGrouped="True" />   
+
     </Page.Resources>
+
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -21,7 +28,25 @@
             <PivotItem Header="People">
 
                 <ListView x:Name="ContactsListView"
-                          ItemTemplate="{StaticResource ContactsTemplate}" />
+                          ItemTemplate="{StaticResource ContactsTemplate}"
+                          ItemsSource="{x:Bind CollectionViewSource.View}"
+                          SelectionMode="Single"
+                          ShowsScrollingPlaceholders="True">
+
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate x:DataType="data:GroupingItem">
+                                    <TextBlock Text="{x:Bind key}"
+                                               Foreground="Black"
+                                               Style="{ThemeResource TitleTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                    
+                </ListView>
+
 
             </PivotItem>
 
@@ -35,3 +60,4 @@
         </Pivot>
     </Grid>
 </Page>
+    

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,25 @@ namespace People.Backend {
 
         public void SetNameToBeDisplayed(String name) {
             NameToBeDisplayed = name;
+        }
+
+        public static ObservableCollection<GroupingItem> createGrouping(ObservableCollection<Person> contacts) {
+
+            ObservableCollection<GroupingItem> groupingItems = new ObservableCollection<GroupingItem>();
+
+            char[] Characters = contacts.Select(o => o.NameToBeDisplayed[0]).Distinct().ToArray().OrderBy(c => c).ToArray();
+
+            foreach (char character in Characters) {
+                GroupingItem groupingItem = new GroupingItem();
+                groupingItem.Key = character;
+
+                groupingItem.AddRange(contacts.Where(o => o.NameToBeDisplayed[0] == character).ToList());
+                groupingItems.Add(groupingItem);
+            }
+
+
+
+            return groupingItems;
         }
 
     }

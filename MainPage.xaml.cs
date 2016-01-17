@@ -31,49 +31,60 @@ namespace People {
 
             Contacts = new ObservableCollection<Person>();
 
-            Person Luke = new Person();
-            Luke.FirstName = "Luke";
-            Luke.LastName = "Skywalker";
-            Luke.SetNameToBeDisplayed(Luke.FirstName + " " + Luke.LastName);
+            Person person = new Person();
+            person.FirstName = "Luke";
+            person.LastName = "Skywalker";
+            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
+            
+            Contacts.Add(person);
 
-            Contacts.Add(Luke);
+            person = new Person();
+            person.FirstName = "Adam";
+            person.LastName = "Sandler";
+            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
 
-            Luke = new Person();
-            Luke.FirstName = "Luke";
-            Luke.LastName = "Skywalker";
-            Luke.SetNameToBeDisplayed(Luke.FirstName + " " + Luke.LastName);
+            Contacts.Add(person);
 
-            Contacts.Add(Luke);
+            person = new Person();
+            person.FirstName = "Doctor";
+            person.LastName = "Who";
+            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
 
-            Luke = new Person();
-            Luke.FirstName = "Luke";
-            Luke.LastName = "Skywalker";
-            Luke.SetNameToBeDisplayed(Luke.FirstName + " " + Luke.LastName);
+            Contacts.Add(person);
 
-            Contacts.Add(Luke);
+            person = new Person();
+            person.FirstName = "Frodo";
+            person.LastName = "Baggins";
+            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
 
-            Luke = new Person();
-            Luke.FirstName = "Luke";
-            Luke.LastName = "Skywalker";
-            Luke.SetNameToBeDisplayed(Luke.FirstName + " " + Luke.LastName);
+            Contacts.Add(person);
 
-            Contacts.Add(Luke);
+            person = new Person();
+            person.FirstName = "Fero";
+            person.LastName = "Mikloško";
+            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
 
-            Person James = new Person();
-            James.FirstName = "James";
-            James.LastName = "Kirk";
-            James.SetNameToBeDisplayed(James.FirstName + " " + James.LastName);
 
-            Contacts.Add(James);
+            person = new Person();
+            person.FirstName = "Alice";
+            person.LastName = "In Woderland";
+            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
 
-            Person Peter = new Person();
-            Peter.FirstName = "Peter";
-            Peter.LastName = "Quill";
-            Peter.SetNameToBeDisplayed(Peter.FirstName + " " + Peter.LastName);
+            Contacts.Add(person);
 
-            Contacts.Add(Peter);
+            person = new Person();
+            person.FirstName = "Legolas";
+            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
 
-            //ContactsListView.ItemsSource = groupingItems;
+            Contacts.Add(person);
+
+            person = new Person();
+            person.FirstName = "Daniel";
+            person.LastName = "Craige";
+            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
+
+            Contacts.Add(person);
+
             CollectionViewSource.Source = Person.createGrouping(Contacts);
         }
     }

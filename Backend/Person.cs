@@ -47,14 +47,11 @@ namespace People.Backend {
                 GroupingItem groupingItem = new GroupingItem();
                 groupingItem.Key = character;
 
-                groupingItem.AddRange(contacts.Where(o => o.NameToBeDisplayed[0] == character).ToList());
+                groupingItem.AddRange(contacts.Where(o => o.NameToBeDisplayed[0] == character).OrderBy(o => o.NameToBeDisplayed).ToList());
                 groupingItems.Add(groupingItem);
             }
 
-
-
             return groupingItems;
         }
-
     }
 }

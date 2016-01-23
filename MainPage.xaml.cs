@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,13 +24,16 @@ namespace People {
     /// </summary>
     public sealed partial class MainPage : Page {
 
-        private ObservableCollection<Person> Contacts;
-        private ObservableCollection<GroupingItem> groupingItems = new ObservableCollection<GroupingItem>();
+        private ObservableCollection<Person> Contacts { get; set; }
+        private ObservableCollection<GroupingItem> groupingItems {
+            get; set;
+        }
 
         public MainPage() {
             this.InitializeComponent();
 
             Contacts = new ObservableCollection<Person>();
+            groupingItems = new ObservableCollection<GroupingItem>();
 
             Person person = new Person();
             person.FirstName = "Luke";
@@ -85,7 +89,18 @@ namespace People {
 
             Contacts.Add(person);
 
-            CollectionViewSource.Source = Person.createGrouping(Contacts);
+            groupingItems = Person.createGrouping(Contacts);
+            ContactsViewSource.Source = groupingItems;
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e) {
+            ObservableCollection<Person> filteredContacts = new ObservableCollection<Person>(Contacts.Where(o => o.NameToBeDisplayed.Contains(SearchBox.Text)).ToList());
+            ObservableCollection<GroupingItem> filteredGroups = Person.createGrouping(filteredContacts);
+
+            groupingItems.Clear();
+            foreach (var groupingItem in filteredGroups) {
+                groupingItems.Add(groupingItem);
+            }
         }
     }
 }

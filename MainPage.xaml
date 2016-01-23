@@ -9,15 +9,18 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <DataTemplate x:Name="ContactsTemplate" >
-            <StackPanel Orientation="Vertical" >
-                <TextBlock Text="{Binding NameToBeDisplayed}" Foreground="White" />
-            </StackPanel>
+        <DataTemplate x:Name="ContactsTemplate" x:DataType="data:Person">
+            <TextBlock Text="{Binding NameToBeDisplayed}" />
         </DataTemplate>
 
-        <CollectionViewSource x:Name="CollectionViewSource"
+        <DataTemplate x:Name="AutoSuggestBox" x:DataType="data:Person">
+            <TextBlock Text="{Binding NameToBeDisplayed}" />
+        </DataTemplate>
+
+        <CollectionViewSource x:Name="ContactsViewSource"
                               x:Key="src"
-                              IsSourceGrouped="True" />   
+                              Source="{x:Bind groupingItems, Mode=OneWay}"
+                              IsSourceGrouped="True" />
 
     </Page.Resources>
 
@@ -27,27 +30,38 @@
         <Pivot >
             <PivotItem Header="People" >
 
-                <ListView x:Name="ContactsListView"
-                          ItemTemplate="{StaticResource ContactsTemplate}"
-                          ItemsSource="{x:Bind CollectionViewSource.View}"
-                          SelectionMode="Single"
-                          ShowsScrollingPlaceholders="False" >
+                <Grid>
 
-                    <ListView.GroupStyle>
-                        <GroupStyle>
-                            <GroupStyle.HeaderTemplate>
-                                <DataTemplate x:DataType="data:GroupingItem">
-                                    <TextBlock Text="{x:Bind Key}"
-                                               Foreground="Blue"
-                                               Style="{ThemeResource TitleTextBlockStyle}"/>
-                                </DataTemplate>
-                            </GroupStyle.HeaderTemplate>
-                        </GroupStyle>
-                    </ListView.GroupStyle>
-                    
-                </ListView>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
+                    <TextBox x:Name="SearchBox"
+                             PlaceholderText="Search ... "
+                             TextChanged="SearchBox_TextChanged"
+                             Grid.Row="0"/>
 
+                    <ListView x:Name="ContactsListView"
+                              ItemTemplate="{StaticResource ContactsTemplate}"
+                              SelectionMode="Single" 
+                              ItemsSource="{x:Bind ContactsViewSource.View}"
+                              Grid.Row="1">
+
+                            <ListView.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate x:DataType="data:GroupingItem">
+                                            <TextBlock Text="{x:Bind Key}"
+                                                       Foreground="Blue"/>
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                </GroupStyle>
+                        </ListView.GroupStyle>
+
+                    </ListView>
+
+                </Grid>
             </PivotItem>
 
             <PivotItem Header="Groups" >

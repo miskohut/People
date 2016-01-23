@@ -194,3 +194,11 @@ C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\
 C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\bin\x86\Debug\System.Reactive.Core.dll
+C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\bin\x86\Debug\System.Reactive.Interfaces.dll
+C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\bin\x86\Debug\System.Reactive.Linq.dll
+C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\bin\x86\Debug\System.Reactive.PlatformServices.dll
+C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\System.Reactive.Core\en-US\System.Reactive.Strings_Core.resw
+C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\System.Reactive.Linq\en-US\System.Reactive.Strings_Linq.resw
+C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\System.Reactive.PlatformServices\en-US\System.Reactive.Strings_PlatformServices.resw
+C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\People.csproj.GenerateResource.Cache

@@ -5,10 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace People.Backend {
-    class Phone {
+    class Type {
 
-        public String PhoneNumber { get; set; }
-        public Type PhoneType { get; set; }
-
+        public String ContactType { get; set; }
     }
 }

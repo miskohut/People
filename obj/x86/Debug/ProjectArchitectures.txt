@@ -1,1 +1,1 @@
-C:\Users\misko\OneDrive\Bakalárka\produkt\Projects\People\People\People.csproj;x86
+C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\People.csproj;x86

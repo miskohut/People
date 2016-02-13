@@ -1,0 +1,548 @@
+﻿<Page
+    x:Class="People.NewContact"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:People"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:People.Backend"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Name="NumberListViewItem" x:DataType="data:Phone" >
+            <RelativePanel  >
+                <RelativePanel
+                    x:Name="DropdownClosePanel"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True">
+
+                    <ComboBox
+                        x:Name="NumberTypeComboBox"
+                        HorizontalAlignment="Left"
+                        BorderBrush="Transparent"
+                        SelectedIndex="1">
+                        
+                        <ComboBoxItem Content="Home" />
+                        <ComboBoxItem Content="School" />
+                        <ComboBoxItem Content="Friends" />
+                        <ComboBoxItem Content="Work" />
+                        <ComboBoxItem Content="Others" />
+                    </ComboBox>
+
+                    <Button
+                    	x:Name="RemoveNumberButton"
+                        RelativePanel.AlignRightWithPanel="True" 
+                        RelativePanel.AlignBottomWith="NumberTypeComboBox"
+                        RelativePanel.AlignTopWith="NumberTypeComboBox"
+                        Background="Transparent"
+                        VerticalAlignment="Stretch"
+                        Click="RemoveNumberButton_Click">
+                        <Button.Content>
+                            <Image
+                                Width="18"
+                                Source="Assets/Icons/Delete-64.png" />
+                        </Button.Content>
+                    </Button>
+                </RelativePanel>
+
+                <TextBox
+                    RelativePanel.Below="DropdownClosePanel"
+                    x:Name="NumberValue"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    Text="{Binding PhoneNumber}" />
+
+            </RelativePanel>
+        </DataTemplate>
+        <DataTemplate x:Name="EmailsListViewItem" x:DataType="data:Email" >
+            <RelativePanel  >
+                <RelativePanel
+                    x:Name="DropdownClosePanel"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True">
+
+                    <ComboBox
+                        x:Name="EmailTypeComboBox"
+                        HorizontalAlignment="Left"
+                        BorderBrush="Transparent"
+                        SelectedIndex="1">
+                        
+                        <ComboBoxItem Content="Home" />
+                        <ComboBoxItem Content="School" />
+                        <ComboBoxItem Content="Friends" />
+                        <ComboBoxItem Content="Work" />
+                        <ComboBoxItem Content="Others" />
+                    </ComboBox>
+
+                    <Button
+                    	x:Name="RemoveEmailButton"
+                        RelativePanel.AlignRightWithPanel="True" 
+                        RelativePanel.AlignBottomWith="EmailTypeComboBox"
+                        RelativePanel.AlignTopWith="EmailTypeComboBox"
+                        Background="Transparent"
+                        VerticalAlignment="Stretch"
+                        Click="RemoveEmailButton_Click">
+                        <Button.Content>
+                            <Image
+                                Width="18"
+                                Source="Assets/Icons/Delete-64.png" />
+                        </Button.Content>
+                    </Button>
+                </RelativePanel>
+
+                <TextBox
+                    RelativePanel.Below="DropdownClosePanel"
+                    x:Name="EmailValue"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    Text="{Binding E_mail}" />
+
+            </RelativePanel>
+        </DataTemplate>
+        <DataTemplate x:Name="AddressListViewItem" x:DataType="data:Address">
+            <RelativePanel>
+
+                <RelativePanel
+                    x:Name="DropdownClosePanel"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True">
+
+                    <ComboBox
+                        x:Name="AddressTypeComboBox"
+                        HorizontalAlignment="Left"
+                        BorderBrush="Transparent"
+                        SelectedIndex="1">
+
+                        <ComboBoxItem Content="Home" />
+                        <ComboBoxItem Content="School" />
+                        <ComboBoxItem Content="Friends" />
+                        <ComboBoxItem Content="Work" />
+                        <ComboBoxItem Content="Others" />
+                    </ComboBox>
+
+                    <Button
+                    	x:Name="RemoveAddressButton"
+                        RelativePanel.AlignRightWithPanel="True" 
+                        RelativePanel.AlignBottomWith="AddressTypeComboBox"
+                        RelativePanel.AlignTopWith="AddressTypeComboBox"
+                        Background="Transparent"
+                        VerticalAlignment="Stretch"
+                        Click="RemoveAddressButton_Click">
+                        <Button.Content>
+                            <Image
+                                Width="18"
+                                Source="Assets/Icons/Delete-64.png" />
+                        </Button.Content>
+                    </Button>
+                </RelativePanel>
+
+                <TextBox
+                    x:Name="Street"
+                    Margin="0, 10, 0, 0"
+                    Text="{Binding Street, Mode=TwoWay}"
+                    PlaceholderText="Street"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.Below="DropdownClosePanel"/>
+
+                <TextBox
+                    x:Name="StreetNumber"
+                    Margin="0, 10, 0, 0"
+                    Text="{Binding StreetNumber, Mode=TwoWay}"
+                    PlaceholderText="Street number" 
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.Below="Street"/>
+
+                <TextBox
+                    x:Name="PostalCode"
+                    Margin="0, 10, 0, 0"
+                    Text="{Binding PostalCode, Mode=TwoWay}"
+                    PlaceholderText="Postal code"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.Below="StreetNumber"/>
+
+                <TextBox 
+                    x:Name="City"
+                    Margin="0, 10, 0, 0"
+                    Text="{Binding City, Mode=TwoWay}"
+                    PlaceholderText="City"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.Below="PostalCode"/>
+
+                <TextBox
+                    x:Name="State"
+                    Margin="0, 10, 0, 10"
+                    Text="{Binding State, Mode=TwoWay}"
+                    PlaceholderText="State"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.Below="City"/>
+            </RelativePanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <RelativePanel
+        Background="Black">
+
+        <TextBlock
+            x:Name="NewContactLabel"
+            Text="NEW CONTACT"
+            FontWeight="Medium"
+            FontSize="20"
+            Margin="10,0,10,0"/>
+
+        <ScrollViewer 
+            RelativePanel.Below="NewContactLabel"
+            Margin="0,10,0,0">
+            <RelativePanel >
+
+                <!--Ellipse image-->
+                <Grid x:Name="EllipseGrid"  Width="150" Height="150" HorizontalAlignment="Left"
+                      >
+                    <Ellipse 
+                        x:Name="Image"
+                        Width="140"
+                        Height="140"
+                        HorizontalAlignment="Center"
+                        Stroke="White">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="ImageSource"  />
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <TextBlock  
+                        x:Name="EllipseText"
+                        Text="add image"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+                </Grid>
+
+                <TextBlock
+                    x:Name="FirstNameLabel"
+                    Text="First name"
+                    Margin="10,0,0,0"
+                    RelativePanel.Below="EllipseGrid"/>
+
+                <StackPanel
+                    x:Name="FirstNamePanel"
+                    Orientation="Horizontal"
+                    RelativePanel.Below="FirstNameLabel"
+                    Margin="10,0,0,0">
+                    <TextBox
+                        x:Name="FirstName"
+                        Width="260"
+                        Text="{x:Bind Path=Person.FirstName, Mode=TwoWay}"/>
+
+                    <Button
+                        x:Name="NameDetailsButton"
+                        Width="40"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        Click="NameDetailsButton_Click">
+                        <Button.Content>
+                            <Image 
+                                Source="Assets/Icons/Edit-64.png"
+                                Stretch="UniformToFill" Height="18" VerticalAlignment="Top" />
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+
+                <Border
+                    x:Name="FirstBorder"
+                    RelativePanel.Below="FirstNamePanel"
+                    Height="1"
+                    HorizontalAlignment="Stretch"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWith="FirstNamePanel"
+                    Margin="10"
+                    Background="White"  />
+
+                <TextBlock
+                    x:Name="NumbersLabel"
+                    Text="Numbers"
+                    Margin="10,0,0,0"
+                    RelativePanel.Below="FirstBorder"/>
+
+                <ListView
+                    x:Name="NumbersListView"
+                    RelativePanel.Below="NumbersLabel"
+                    RelativePanel.AlignRightWith="FirstNamePanel"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    ItemTemplate="{StaticResource NumberListViewItem}"
+                    ItemsSource="{Binding Person.Phones, Mode=TwoWay}" >
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid>
+                                            <Border x:Name="myback" Background="Transparent">
+                                                <ContentPresenter 
+                                                    Content="{TemplateBinding Content}" 
+                                                    ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                    Margin="10, 0, 0, 0" />
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                </ListView>
+
+                <Button
+                    x:Name="AddPhoneButton"
+                    Foreground="White"
+                    Background="Transparent"
+                    RelativePanel.Below="NumbersListView"
+                    Margin="10, 0, 0, 0"
+                    Click="AddPhoneButton_Click">
+                    <Button.Content>
+                        <RelativePanel>
+                            <Image
+                                x:Name="AddPhoneIcon"
+                                Source="Assets/Icons/appbar.add.png" 
+                                Stretch="Fill" 
+                                Width="35"  
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignLeftWithPanel="True"
+                                Margin="-20,0,0,0"/>
+                            <TextBlock
+                                RelativePanel.RightOf="AddPhoneIcon"
+                                Text="Add phone" 
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignVerticalCenterWith="AddPhoneIcon"/>
+                        </RelativePanel>
+                    </Button.Content>
+                </Button>
+
+                <Border
+                    x:Name="SecondBorder"
+                    RelativePanel.Below="AddPhoneButton"
+                    Height="1"
+                    HorizontalAlignment="Stretch"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWith="FirstNamePanel"
+                    Margin="10"
+                    Background="White"  />
+
+                <TextBlock
+                    x:Name="EmailsLabel"
+                    Text="Emails"
+                    Margin="10,0,0,0"
+                    RelativePanel.Below="SecondBorder"/>
+
+                <ListView
+                    x:Name="EmailsListView"
+                    RelativePanel.Below="EmailsLabel"
+                    RelativePanel.AlignRightWith="FirstNamePanel"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    ItemTemplate="{StaticResource EmailsListViewItem}"
+                    ItemsSource="{Binding Person.Emails, Mode=TwoWay}" >
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid>
+                                            <Border x:Name="myback" Background="Transparent">
+                                                <ContentPresenter 
+                                                    Content="{TemplateBinding Content}" 
+                                                    ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                    Margin="10, 0, 0, 0" />
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                </ListView>
+
+                <Button
+                    x:Name="AddEmailButton"
+                    Foreground="White"
+                    Background="Transparent"
+                    RelativePanel.Below="EmailsListView"
+                    Margin="10, 0, 0, 0"
+                    Click="AddEmailButton_Click">
+                    <Button.Content>
+                        <RelativePanel>
+                            <Image
+                                x:Name="AddEmailIcon"
+                                Source="Assets/Icons/appbar.add.png" 
+                                Stretch="Fill" 
+                                Width="35"  
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignLeftWithPanel="True"
+                                Margin="-20,0,0,0"/>
+                            <TextBlock
+                                RelativePanel.RightOf="AddEmailIcon"
+                                Text="Add email" 
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignVerticalCenterWith="AddEmailIcon"/>
+                        </RelativePanel>
+                    </Button.Content>
+                </Button>
+
+                <Border
+                    x:Name="ThirdBorder"
+                    RelativePanel.Below="AddEmailButton"
+                    Height="1"
+                    HorizontalAlignment="Stretch"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWith="FirstNamePanel"
+                    Margin="10"
+                    Background="White"  />
+
+                <TextBlock
+                    x:Name="AddressLabel"
+                    Text="Addresses"
+                    Margin="10,0,0,0"
+                    RelativePanel.Below="ThirdBorder"/>
+
+                <ListView
+                    x:Name="AddressesListView"
+                    RelativePanel.Below="AddressLabel"
+                    RelativePanel.AlignRightWith="FirstNamePanel"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    ItemTemplate="{StaticResource AddressListViewItem}"
+                    ItemsSource="{Binding Person.Addresses, Mode=TwoWay}" >
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid>
+                                            <Border x:Name="myback" Background="Transparent">
+                                                <ContentPresenter 
+                                                    Content="{TemplateBinding Content}" 
+                                                    ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                    Margin="10, 0, 0, 0" />
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                </ListView>
+
+                <Button
+                    x:Name="AddAddressButton"
+                    Foreground="White"
+                    Background="Transparent"
+                    RelativePanel.Below="AddressesListView"
+                    Margin="10, 0, 0, 0"
+                    Click="AddAddressButton_Click">
+                    <Button.Content>
+                        <RelativePanel>
+                            <Image
+                                x:Name="AddAddressIcon"
+                                Source="Assets/Icons/appbar.add.png" 
+                                Stretch="Fill" 
+                                Width="35"  
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignLeftWithPanel="True"
+                                Margin="-20,0,0,0"/>
+                            <TextBlock
+                                RelativePanel.RightOf="AddAddressIcon"
+                                Text="Add address" 
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignVerticalCenterWith="AddAddressIcon"/>
+                        </RelativePanel>
+                    </Button.Content>
+                </Button>
+
+                <Border
+                    x:Name="FourthBorder"
+                    RelativePanel.Below="AddAddressButton"
+                    Height="1"
+                    HorizontalAlignment="Stretch"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWith="FirstNamePanel"
+                    Margin="10"
+                    Background="White"  />
+
+                <Button
+                    x:Name="AddRingthoneButton"
+                    Foreground="White"
+                    Background="Transparent"
+                    RelativePanel.Below="FourthBorder"
+                    Margin="10, 0, 0, 0"
+                    Click="AddRingthoneButton_Click">
+                    <Button.Content>
+                        <RelativePanel>
+                            <Image
+                                x:Name="AddRingthoneIcon"
+                                Source="Assets/Icons/appbar.add.png" 
+                                Stretch="Fill" 
+                                Width="35"  
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignLeftWithPanel="True"
+                                Margin="-20,0,0,0"/>
+                            <TextBlock
+                                RelativePanel.RightOf="AddRingthoneIcon"
+                                Text="Add phone"
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignVerticalCenterWith="AddRingthoneIcon"/>
+                        </RelativePanel>
+                    </Button.Content>
+                </Button>
+
+                <Button
+                    x:Name="AddSMSthoneButton"
+                    Foreground="White"
+                    Background="Transparent"
+                    RelativePanel.Below="AddRingthoneButton"
+                    Margin="10, 0, 0, 0"
+                    Click="AddSMSthoneButton_Click">
+                    <Button.Content>
+                        <RelativePanel>
+                            <Image
+                                x:Name="AddSMSthoneIcon"
+                                Source="Assets/Icons/appbar.add.png" 
+                                Stretch="Fill" 
+                                Width="35"  
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignLeftWithPanel="True"
+                                Margin="-20,0,0,0"/>
+                            <TextBlock
+                                RelativePanel.RightOf="AddSMSthoneIcon"
+                                Text="Set ringthone" 
+                                VerticalAlignment="Center"
+                                RelativePanel.AlignVerticalCenterWith="AddSMSthoneIcon"/>
+                        </RelativePanel>
+                    </Button.Content>
+                </Button>
+            </RelativePanel>
+        </ScrollViewer>
+    </RelativePanel>
+
+    <Page.BottomAppBar>
+        <CommandBar 
+            x:Name="SaveCommandBar"
+            Background="White" 
+            Foreground="Black"
+            AllowDrop="False" >
+            <AppBarButton
+                x:Name="SaveBar"
+                HorizontalAlignment="Center" 
+                Icon="Save" 
+                Foreground="Black"
+                Click="SaveBar_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
+</Page>

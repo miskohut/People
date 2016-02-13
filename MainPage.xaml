@@ -21,9 +21,8 @@
                               x:Key="src"
                               Source="{x:Bind groupingItems, Mode=OneWay}"
                               IsSourceGrouped="True" />
-
+    
     </Page.Resources>
-
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 

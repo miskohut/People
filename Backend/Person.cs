@@ -20,17 +20,17 @@ namespace People.Backend {
         public DateTime Birthday { get; set; }
 
         public String PhotoPath { get; set; }
-        public String RingtonePath { get; set; }
-        public String SMSTonePath { get; set; }
+        public String RingthonePath { get; set; }
+        public String SMSThonePath { get; set; }
 
-        public List<Phone> Phones { get; }
-        public List<Email> Emails { get; }
-        public List<Address> Addresses { get; }
+        public ObservableCollection<Phone> Phones { get; }
+        public ObservableCollection<Email> Emails { get; }
+        public ObservableCollection<Address> Addresses { get; }
 
         public Person() {
-            Phones = new List<Phone>();
-            Emails = new List<Email>();
-            Addresses = new List<Address>();
+            Phones = new ObservableCollection<Phone>();
+            Emails = new ObservableCollection<Email>();
+            Addresses = new ObservableCollection<Address>();
         }
 
         public void SetNameToBeDisplayed(String name) {

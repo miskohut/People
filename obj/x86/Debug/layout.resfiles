@@ -1,5 +1,8 @@
 WinMetadata\Windows.winmd
 ApplicationInsights.config
+Assets\Icons\appbar.add.png
+Assets\Icons\Delete-64.png
+Assets\Icons\Edit-64.png
 Assets\LockScreenLogo.scale-200.png
 Assets\SplashScreen.scale-200.png
 Assets\Square150x150Logo.scale-200.png

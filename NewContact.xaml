@@ -201,7 +201,7 @@
 
                 <!--Ellipse image-->
                 <Grid x:Name="EllipseGrid"  Width="150" Height="150" HorizontalAlignment="Left"
-                      >
+                      Tapped="EllipseGrid_Tapped">
                     <Ellipse 
                         x:Name="Image"
                         Width="140"

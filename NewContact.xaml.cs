@@ -64,7 +64,8 @@ namespace People {
         }
 
         private void AddAddressButton_Click(object sender, RoutedEventArgs e) {
-        }
+            Person.Addresses.Add(new Address());
+        }   
 
         private void AddRingthoneButton_Click(object sender, RoutedEventArgs e) {
         }
@@ -73,10 +74,40 @@ namespace People {
 
         }
 
-        private void NameDetailsButton_Click(object sender, RoutedEventArgs e) {
+        private async void NameDetailsButton_Click(object sender, RoutedEventArgs e) {
+            FileOpenPicker filePicker = new FileOpenPicker();
+            filePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            filePicker.ViewMode = PickerViewMode.Thumbnail;
+
+            filePicker.FileTypeFilter.Clear();
+            filePicker.FileTypeFilter.Add(".bmp");
+            filePicker.FileTypeFilter.Add(".png");
+            filePicker.FileTypeFilter.Add(".jpeg");
+            filePicker.FileTypeFilter.Add(".jpg");
+
+            StorageFile file = await filePicker.PickSingleFileAsync();
+
+            if (file != null) {
+                Person.PhotoPath = file.Path;
+                using (IRandomAccessStream fileStream =
+                    await file.OpenAsync(FileAccessMode.Read)) {
+                    // Set the image source to the selected bitmap.
+                    contactImage = new BitmapImage();
+
+                    contactImage.SetSource(fileStream);
+                    ImageSource.ImageSource = contactImage;
+
+                    EllipseText.Visibility = Visibility.Collapsed;
+
+                }
+            }
         }
 
         private void SaveBar_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void EllipseGrid_Tapped(object sender, TappedRoutedEventArgs e) {
 
         }
     }

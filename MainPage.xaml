@@ -26,7 +26,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Pivot >
+        <Pivot 
+            x:Name="MainPivot">
             <PivotItem Header="People" >
 
                 <Grid>
@@ -72,5 +73,21 @@
             </PivotItem>
         </Pivot>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar 
+            x:Name="CommandBar"
+            Background="Black" 
+            Foreground="White"
+            AllowDrop="True" >
+            <AppBarButton
+                x:Name="NewAppBarButton"
+                HorizontalAlignment="Center" 
+                Icon="Add" 
+                Foreground="White"
+                Click="NewAppBarButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
 </Page>
     

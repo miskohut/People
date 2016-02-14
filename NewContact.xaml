@@ -533,14 +533,14 @@
     <Page.BottomAppBar>
         <CommandBar 
             x:Name="SaveCommandBar"
-            Background="White" 
-            Foreground="Black"
+            Background="Black" 
+            Foreground="White"
             AllowDrop="False" >
             <AppBarButton
                 x:Name="SaveBar"
                 HorizontalAlignment="Center" 
                 Icon="Save" 
-                Foreground="Black"
+                Foreground="White"
                 Click="SaveBar_Click"/>
         </CommandBar>
     </Page.BottomAppBar>

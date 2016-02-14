@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Backend\Address.cs" />
     <Compile Include="Backend\Email.cs" />
+    <Compile Include="Backend\GlobalData.cs" />
     <Compile Include="Backend\Group.cs" />
     <Compile Include="Backend\GroupingItem.cs" />
     <Compile Include="Backend\Person.cs" />

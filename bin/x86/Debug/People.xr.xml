@@ -89,6 +89,18 @@
     <RootType FullName="Windows.UI.Xaml.Controls.GroupStyle">
       <RootProperty Name="HeaderTemplate" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="Background" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="AllowDrop" />
+      <RootProperty Name="PrimaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Foreground" />
+      <RootEvent Name="Click" />
+    </RootType>
     <RootType FullName="People.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
       <RootProperty Name="Children" />
@@ -182,18 +194,6 @@
       <RootProperty Name="Fill" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.ImageBrush" />
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="Background" />
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="AllowDrop" />
-      <RootProperty Name="PrimaryCommands" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Foreground" />
-      <RootEvent Name="Click" />
-    </RootType>
     <RootType FullName="People.NewContact" />
     <RootType FullName="People.NewContactDetails" />
   </Roots.RootTypes>

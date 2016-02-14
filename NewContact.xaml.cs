@@ -102,7 +102,8 @@ namespace People {
         }
 
         private void SaveBar_Click(object sender, RoutedEventArgs e) {
-
+            Person.SetNameToBeDisplayed(Person.FirstName + " " + Person.LastName);
+            Frame.Navigate(typeof(MainPage), Person);
         }
 
         private async void EllipseGrid_Tapped(object sender, TappedRoutedEventArgs e) {

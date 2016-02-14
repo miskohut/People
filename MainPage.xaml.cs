@@ -23,8 +23,7 @@ namespace People {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page {
-
-        private ObservableCollection<Person> Contacts { get; set; }
+        
         private ObservableCollection<GroupingItem> groupingItems {
             get; set;
         }
@@ -32,75 +31,33 @@ namespace People {
         public MainPage() {
             this.InitializeComponent();
 
-            Contacts = new ObservableCollection<Person>();
-            groupingItems = new ObservableCollection<GroupingItem>();
-
-            Person person = new Person();
-            person.FirstName = "Luke";
-            person.LastName = "Skywalker";
-            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
-            
-            Contacts.Add(person);
-
-            person = new Person();
-            person.FirstName = "Adam";
-            person.LastName = "Sandler";
-            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
-
-            Contacts.Add(person);
-
-            person = new Person();
-            person.FirstName = "Doctor";
-            person.LastName = "Who";
-            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
-
-            Contacts.Add(person);
-
-            person = new Person();
-            person.FirstName = "Frodo";
-            person.LastName = "Baggins";
-            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
-
-            Contacts.Add(person);
-
-            person = new Person();
-            person.FirstName = "Fero";
-            person.LastName = "Mikloško";
-            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
-
-
-            person = new Person();
-            person.FirstName = "Alice";
-            person.LastName = "In Woderland";
-            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
-
-            Contacts.Add(person);
-
-            person = new Person();
-            person.FirstName = "Legolas";
-            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
-
-            Contacts.Add(person);
-
-            person = new Person();
-            person.FirstName = "Daniel";
-            person.LastName = "Craige";
-            person.SetNameToBeDisplayed(person.FirstName + " " + person.LastName);
-
-            Contacts.Add(person);
-
-            groupingItems = Person.createGrouping(Contacts);
+            groupingItems = Person.createGrouping(GlobalData.Instance.Contacts);
             ContactsViewSource.Source = groupingItems;
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e) {
-            ObservableCollection<Person> filteredContacts = new ObservableCollection<Person>(Contacts.Where(o => o.NameToBeDisplayed.Contains(SearchBox.Text)).ToList());
+            ObservableCollection<Person> filteredContacts = new ObservableCollection<Person>(GlobalData.Instance.Contacts.Where(o => o.NameToBeDisplayed.Contains(SearchBox.Text)).ToList());
             ObservableCollection<GroupingItem> filteredGroups = Person.createGrouping(filteredContacts);
 
             groupingItems.Clear();
             foreach (var groupingItem in filteredGroups) {
                 groupingItems.Add(groupingItem);
             }
+        }
+
+        private void NewAppBarButton_Click(object sender, RoutedEventArgs e) {
+            if (MainPivot.SelectedIndex == 0) {
+                Frame.Navigate(typeof(NewContact));
+            }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            if (e.Parameter is Person) {
+                GlobalData.Instance.Contacts.Add((Person)e.Parameter);
+                groupingItems = Person.createGrouping(GlobalData.Instance.Contacts);
+            }
+
+            base.OnNavigatedTo(e);
         }
     }
 }

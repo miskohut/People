@@ -34,10 +34,6 @@ namespace People {
 
             Person = new Person();
             Person.Phones.Add(new Phone());
-
-            NumbersListView.ItemsSource = Person.Phones;
-            EmailsListView.ItemsSource = Person.Emails;
-            AddressesListView.ItemsSource = Person.Addresses;
         }
 
         private void AddPhoneButton_Click(object sender, RoutedEventArgs e) {
@@ -67,14 +63,49 @@ namespace People {
             Person.Addresses.Add(new Address());
         }   
 
-        private void AddRingthoneButton_Click(object sender, RoutedEventArgs e) {
+        private async void AddRingthoneButton_Click(object sender, RoutedEventArgs e) {
+            FileOpenPicker filePicker = new FileOpenPicker();
+            filePicker.SuggestedStartLocation = PickerLocationId.MusicLibrary;
+            filePicker.ViewMode = PickerViewMode.List;
+
+            filePicker.FileTypeFilter.Clear();
+            filePicker.FileTypeFilter.Add(".mp3");
+            filePicker.FileTypeFilter.Add(".wav");
+            filePicker.FileTypeFilter.Add(".wma");
+
+            StorageFile file = await filePicker.PickSingleFileAsync();
+
+            if (file != null) {
+                Person.RingthonePath = file.Path;
+            }
         }
 
-        private void AddSMSthoneButton_Click(object sender, RoutedEventArgs e) {
+        private async void AddSMSthoneButton_Click(object sender, RoutedEventArgs e) {
+            FileOpenPicker filePicker = new FileOpenPicker();
+            filePicker.SuggestedStartLocation = PickerLocationId.MusicLibrary;
+            filePicker.ViewMode = PickerViewMode.List;
+
+            filePicker.FileTypeFilter.Clear();
+            filePicker.FileTypeFilter.Add(".mp3");
+            filePicker.FileTypeFilter.Add(".wav");
+            filePicker.FileTypeFilter.Add(".wma");
+
+            StorageFile file = await filePicker.PickSingleFileAsync();
+
+            if (file != null) {
+                Person.RingthonePath = file.Path;
+            }
+        }
+
+        private void NameDetailsButton_Click(object sender, RoutedEventArgs e) {
+            this.Frame.Navigate(typeof(NewContactDetails), Person);
+        }
+
+        private void SaveBar_Click(object sender, RoutedEventArgs e) {
 
         }
 
-        private async void NameDetailsButton_Click(object sender, RoutedEventArgs e) {
+        private async void EllipseGrid_Tapped(object sender, TappedRoutedEventArgs e) {
             FileOpenPicker filePicker = new FileOpenPicker();
             filePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
             filePicker.ViewMode = PickerViewMode.Thumbnail;
@@ -103,12 +134,18 @@ namespace People {
             }
         }
 
-        private void SaveBar_Click(object sender, RoutedEventArgs e) {
 
-        }
 
-        private void EllipseGrid_Tapped(object sender, TappedRoutedEventArgs e) {
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            if (e.Parameter is Person) {
+                this.Person = (Person)e.Parameter;
+            }
 
+            NumbersListView.ItemsSource = this.Person.Phones;
+            EmailsListView.ItemsSource = this.Person.Emails;
+            AddressesListView.ItemsSource = this.Person.Addresses;
+
+            base.OnNavigatedFrom(e);
         }
     }
 }

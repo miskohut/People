@@ -12,6 +12,8 @@ namespace People.Backend {
         public String MiddleName { get; set; }
         public String LastName { get; set; }
 
+        public String Nickname { get; set; }
+
         public String NameToBeDisplayed { get; set; }
 
         public String Title { get; set; }

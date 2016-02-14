@@ -111,6 +111,9 @@
     <Compile Include="NewContact.xaml.cs">
       <DependentUpon>NewContact.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewContactDetails.xaml.cs">
+      <DependentUpon>NewContactDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +147,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NewContact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewContactDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

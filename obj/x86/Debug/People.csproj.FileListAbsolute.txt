@@ -416,3 +416,8 @@ C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\obj\x86\De
 C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\People.csprojResolveAssemblyReference.cache
+C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\NewContactDetails.g.i.cs
+C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\NewContactDetails.g.cs
+C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\NewContactDetails.xaml
+C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\obj\x86\Debug\NewContactDetails.xbf
+C:\Users\misko\Google Drive\Bakalárka\produkt\Projects\People\People\bin\x86\Debug\NewContactDetails.xbf

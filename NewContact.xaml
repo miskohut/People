@@ -50,7 +50,7 @@
                     x:Name="NumberValue"
                     RelativePanel.AlignLeftWithPanel="True"
                     RelativePanel.AlignRightWithPanel="True"
-                    Text="{Binding PhoneNumber}" />
+                    Text="{Binding PhoneNumber, Mode=TwoWay}" />
 
             </RelativePanel>
         </DataTemplate>
@@ -95,7 +95,7 @@
                     x:Name="EmailValue"
                     RelativePanel.AlignLeftWithPanel="True"
                     RelativePanel.AlignRightWithPanel="True"
-                    Text="{Binding E_mail}" />
+                    Text="{Binding E_mail, Mode=TwoWay}" />
 
             </RelativePanel>
         </DataTemplate>

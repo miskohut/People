@@ -1,0 +1,144 @@
+﻿<Page
+    x:Class="People.NewContactDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:People"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:data="using:People.Backend">
+
+    <ScrollViewer>
+        <RelativePanel
+            Background="Black"
+            Width="300"
+            HorizontalAlignment="Left">
+
+            <TextBlock
+                x:Name="FirstNameLabel"
+                Text="First name"
+                FontSize="15"
+                Foreground="White"
+                Margin="10, 10, 20, 5"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"/>
+
+            <TextBox
+                x:Name="FirstName"
+                FontSize="15"
+                Foreground="White"
+                HorizontalAlignment="Stretch"
+                Text="{x:Bind Path=Person.FirstName, Mode=TwoWay}"
+                Margin="10, 0, 20, 10"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="FirstNameLabel"/>
+
+            <TextBlock
+                x:Name="MiddleNameLabel"
+                Text="Middle name"
+                FontSize="15"
+                Foreground="White"
+                Margin="10, 10, 20, 5"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="FirstName"/>
+
+            <TextBox
+                x:Name="MiddleName"
+                FontSize="15"
+                Foreground="White"
+                HorizontalAlignment="Stretch"
+                Text="{x:Bind Path=Person.MiddleName, Mode=TwoWay}"
+                Margin="10, 0, 20, 10"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="MiddleNameLabel"/>
+
+            <TextBlock
+                x:Name="LastNameLabel"
+                Text="Last name"
+                FontSize="15"
+                Foreground="White"
+                Margin="10, 10, 20, 5"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="MiddleName"/>
+
+            <TextBox
+                x:Name="LastName"
+                FontSize="15"
+                Foreground="White"
+                HorizontalAlignment="Stretch"
+                Text="{x:Bind Path=Person.LastName, Mode=TwoWay}"
+                Margin="10, 0, 20, 10"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="LastNameLabel"/>
+
+            <TextBlock
+                x:Name="NicknameLabel"
+                Text="Nickname"
+                FontSize="15"
+                Foreground="White"
+                Margin="10, 10, 20, 5"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="LastName"/>
+
+            <TextBox
+                x:Name="Nickname"
+                FontSize="15"
+                Foreground="White"
+                HorizontalAlignment="Stretch"
+                Text="{x:Bind Path=Person.Nickname, Mode=TwoWay}"
+                Margin="10, 0, 20, 10"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="NicknameLabel"/>
+
+            <TextBlock
+                x:Name="TitleLabel"
+                Text="Title"
+                FontSize="15"
+                Foreground="White"
+                Margin="10, 10, 20, 5"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="Nickname"/>
+
+            <TextBox
+                x:Name="Title"
+                FontSize="15"
+                Foreground="White"
+                HorizontalAlignment="Stretch"
+                Text="{x:Bind Path=Person.Title, Mode=TwoWay}"
+                Margin="10, 0, 20, 10"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="TitleLabel"/>
+
+            <TextBlock
+                x:Name="SuffixLabel"
+                Text="Suffix"
+                FontSize="15"
+                Foreground="White"
+                Margin="10, 10, 20, 5"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="Title"/>
+
+            <TextBox
+                x:Name="Suffix"
+                FontSize="15"
+                Foreground="White"
+                HorizontalAlignment="Stretch"
+                Text="{x:Bind Path=Person.Suffix, Mode=TwoWay}"
+                Margin="10, 0, 20, 10" 
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="SuffixLabel"/>
+
+        </RelativePanel>
+    </ScrollViewer>
+</Page>

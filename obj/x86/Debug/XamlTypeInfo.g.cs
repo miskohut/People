@@ -132,17 +132,19 @@ namespace People.People_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[4];
+            _typeNameTable = new string[5];
             _typeNameTable[0] = "People.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[3] = "People.NewContact";
+            _typeNameTable[4] = "People.NewContactDetails";
 
-            _typeTable = new global::System.Type[4];
+            _typeTable = new global::System.Type[5];
             _typeTable[0] = typeof(global::People.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[3] = typeof(global::People.NewContact);
+            _typeTable[4] = typeof(global::People.NewContactDetails);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -179,6 +181,7 @@ namespace People.People_XamlTypeInfo
 
         private object Activate_0_MainPage() { return new global::People.MainPage(); }
         private object Activate_3_NewContact() { return new global::People.NewContact(); }
+        private object Activate_4_NewContactDetails() { return new global::People.NewContactDetails(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -208,6 +211,13 @@ namespace People.People_XamlTypeInfo
             case 3:   //  People.NewContact
                 userType = new global::People.People_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_3_NewContact;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 4:   //  People.NewContactDetails
+                userType = new global::People.People_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_4_NewContactDetails;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
